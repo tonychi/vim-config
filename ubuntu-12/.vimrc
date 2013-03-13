@@ -12,8 +12,8 @@ set autoindent
 set smartindent
 set cindent
 
-"自动换行
-set wrap
+"取消自动换行
+set nowrap
 "整词换行
 set linebreak
 
@@ -23,9 +23,28 @@ set softtabstop=4
 set shiftwidth=4
 
 "我的状态行显示的内容:文件类型,解码
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
+set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+"              | | | | |  |   |      |  |     |    |
+"              | | | | |  |   |      |  |     |    + current 
+"              | | | | |  |   |      |  |     |       column
+"              | | | | |  |   |      |  |     +-- current line
+"              | | | | |  |   |      |  +-- current % into file
+"              | | | | |  |   |      +-- current syntax in 
+"              | | | | |  |   |          square brackets
+"              | | | | |  |   +-- current fileformat
+"              | | | | |  +-- number of lines
+"              | | | | +-- preview flag in square brackets
+"              | | | +-- help flag in square brackets
+"              | | +-- readonly flag in square brackets
+"              | +-- rodified flag in square brackets
+"              +-- full path to file in the buffer
+
 "总是显示状态栏
 set laststatus=2
+
+set scrolloff=3
+set ruler
 
 "编码设置
 set enc=utf-8
@@ -40,12 +59,15 @@ set incsearch
 
 "启用行号显示
 set number
+set numberwidth=5
 
 "保留最后50条命令记录
 set history=50
 
 "启用输入命令自动显示
 set showcmd
+set showmode
+set showmatch
 
 "自动补全命令使用菜单挂起列表显示
 set wildmenu
@@ -85,4 +107,13 @@ nnoremap <Leader><F8> <ESC>:TagbarToggle<CR>
 nnoremap <Leader><F7> <ESC>:NERDTreeToggle<CR>
 
 nnoremap <c-w>e <ESC>:NERDTreeToggle<CR>:TagbarToggle<CR>
+
+" set Toolbar, Menu visiable 
+map <Leader>ff :if &guioptions =~# 'T' <Bar>
+    \set guioptions-=T <Bar>
+    \set guioptions-=m <bar>
+    \else <Bar>
+    \set guioptions+=T <Bar>
+    \set guioptions+=m <Bar>
+    \endif<CR><CR>
 

@@ -7,17 +7,9 @@ color desert
 
 syntax on
 
-filetype on
-filetype indent on
-filetype plugin on
-
 set nobackup    " do not keep a backup file, use versions instead
 
 set clipboard+=unnamed	"share system clipboard
-
-if has('mouse')
-	set mouse=a
-endif
 
 set encoding=utf-8
 set fenc=utf-8
@@ -80,9 +72,14 @@ set linespace=0
 set cursorline
 hi cursorline guibg=#000000
 
+if has('mouse')
+	set mouse=a
+    set mousehide   "hide mouse when typing
+endif
+
 set number			" always show line number
 set numberwidth=5
-set scrolloff=5
+set scrolloff=3
 set ruler			" show the cursor position all the time
 
 set showcmd			" display incomplete commands
@@ -112,23 +109,56 @@ set guioptions=ce
 "              ||
 "              |+-- use simple dialogs rather than pop-ups
 "              +  use GUI tabs, not console style tabs
-set mousehide   "hide mouse when typing
+"
 set sessionoptions+=resize
 
+set columns=140
+set lines=40
+
+set guioptions+=m
+set guioptions-=T
+
+filetype on
+filetype indent on
+filetype plugin on
 
 " AutoCmd
 if has('autocmd')
     "autocmd GUIEnter * simalt ~x
+
+    autocmd FileType *.py set foldmethod=indent foldlevel=99
+    autocmd FileType *.py setlocal et sta sw=4 sts=4
+
 endif
 
-set guioptions+=m
-set guioptions+=T
+" pyDiction {
+	let g:pydiction_location='$VIM\vimfiles\ftplugin\pydiction\complete-dic'
+	let g:pydiction_menu_height = 20
+" }
+
+" tagbar {
+    let g:tagbar_width=30
+"}
+
+"NERDTree {
+    let g:NERDTreeWinSize=30
+"}
 
 "KeyMap {
-    map <Leader>ee :e $VIM/_vimrc<CR>
-    map <Leader>ss :source $VIM/_vimrc<CR>
+    nnoremap <Leader>ee :e $VIM/_vimrc<CR>
+    nnoremap <Leader>ss :source $VIM/_vimrc<CR>
 
     nnoremap <space> @=((foldclosed(line('.')) <0) ? 'zc' : 'zo')<CR>
+
+    nnoremap <C-S-l> <c-w>l
+    nnoremap <C-S-h> <c-w>h
+    nnoremap <C-S-k> <c-w>k
+    nnoremap <C-S-j> <c-w>j
+
+    nnoremap <Leader><F8> <ESC>:TagbarToggle<CR>
+    nnoremap <Leader><F7> <ESC>:NERDTreeToggle<CR>
+
+    nnoremap <C-w>e <ESC>:NERDTreeToggle D:\Project\<CR>:TagbarToggle<CR>
 
     " set Toolbar, Menu visiable 
 	map <Leader>ff :if &guioptions =~# 'T' <Bar>
@@ -139,26 +169,4 @@ set guioptions+=T
 		\set guioptions+=m <Bar>
 		\endif<CR><CR>
 "}
-
-" PyDiction {
-	let g:pydiction_location='$VIM\vimfiles\ftplugin\pydiction\complete-dic'
-	let g:pydiction_menu_height = 10
-" }
-
-" taglist {
-	let Tlist_Show_One_File=1  " only show one file
-	let Tlist_Only_Window=1
-	let Tlist_Sort_Type = "name" " order by
-	let Tlist_Use_Right_Window = 1 " split to the right side of the screen
-	let Tlist_Compart_Format = 1 " show small meny
-	let Tlist_Exist_OnlyWindow = 1 " if you are the last, kill yourself
-	"let Tlist_File_Fold_Auto_Close = 0 " Do not close tags for other files
-	"let Tlist_Enable_Fold_Column = 0 " Do not show folding tree
-	map <C-w>e <ESC>:TList<CR>
-"}
-
-"NERDTree {
-	map <C-w>e <ESC>:NERDTreeToggle D:\Project\<CR>:Tlist<CR>
-"}
-
 
