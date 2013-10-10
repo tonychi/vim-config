@@ -14,6 +14,8 @@ Bundle 'gmarik/vundle'
 " original repos on github
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'tpope/vim-git'
 " vim-scripts repos
 Bundle 'The-NERD-tree'
 Bundle 'taglist.vim'
@@ -112,20 +114,15 @@ autocmd FileType python set foldmethod=indent foldlevel=99
 " Key mapping
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
-nnoremap <c-w>v :e ~/.vimrc<CR>
-nnoremap <c-w>s :source ~/.vimrc<CR>
+nnoremap <C-w>v :e ~/.vimrc<CR>
+nnoremap <C-w>s :source ~/.vimrc<CR>
 
-nnoremap <c-s-l> <c-w>l
-nnoremap <c-s-h> <c-w>h
-nnoremap <c-s-j> <c-w>k
-nnoremap <c-s-k> <c-w>j
+nnoremap <C-S>L <c-w>l
+nnoremap <C-S>H <c-w>h
+nnoremap <C-S>J <c-w>k
+nnoremap <C-S>K <c-w>j
 
-nnoremap <c-w>e <ESC>:NERDTreeToggle<CR>:TlistToggle<CR>
-
-nnoremap <c-s-y> "+y
-vnoremap <c-s-y> "+y
-nnoremap <c-s-p> "+gP
-vnoremap <c-s-p> "+gP
+nnoremap <C-w>e <ESC>:NERDTreeToggle<CR>:TlistToggle<CR>
 
 " Plugin Config
 let g:ctrlp_working_path_mode = 'ra'
