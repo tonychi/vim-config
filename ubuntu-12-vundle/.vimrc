@@ -12,17 +12,28 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
+"文件搜索
 Bundle 'kien/ctrlp.vim'
+"美化状态栏样式
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'tpope/vim-git'
+"调试功能
+Bundle 'tonychi/vim-debug'
+
 " vim-scripts repos
+"文件夹管理
 Bundle 'The-NERD-tree'
+"Tag lsit, use ctags
 Bundle 'taglist.vim'
 Bundle 'snipMate'
 Bundle 'ZenCoding.vim'
+"格式化js代码
+Bundle '_jsbeautify'
+"管理Undo列表
+Bundle 'Gundo'
+
 " non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
+
 " git repos on your local machine (ie. when working on your own plugin)
 "Bundle 'file:///Users/gmarik/path/to/plugin'
 " ...
@@ -41,11 +52,15 @@ filetype plugin indent on     " required!
 "配色方案
 color desert
 
+" 默认窗体宽度和高度
 set columns=130
 set lines=40
 
+" 去除工具栏显示
 set guioptions-=T
 "set guioptions-=m
+
+"使用鼠标
 set mouse=a
 
 "自动补全命令使用菜单挂起列表显示
@@ -114,20 +129,25 @@ autocmd FileType python set foldmethod=indent foldlevel=99
 " Key mapping
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
-nnoremap <C-w>v :e ~/.vimrc<CR>
-nnoremap <C-w>s :source ~/.vimrc<CR>
+nnoremap <c-w>e :e ~/.vimrc<CR>
+nnoremap <c-w>s :source ~/.vimrc<CR>
+nnoremap <c-w>n :NERDTreeToggle<CR>:TlistToggle<CR>
+nnoremap <c-w>u :GundoToggle<CR>
 
-nnoremap <C-S>L <c-w>l
-nnoremap <C-S>H <c-w>h
-nnoremap <C-S>J <c-w>k
-nnoremap <C-S>K <c-w>j
+nnoremap <c-s-l> <c-w>l
+nnoremap <c-s-h> <c-w>h
+nnoremap <c-s-k> <c-w>k
+nnoremap <c-s-j> <c-w>j
 
-nnoremap <C-w>e <ESC>:NERDTreeToggle<CR>:TlistToggle<CR>
+nnoremap <c-s-y> "+y
+vnoremap <c-s-y> "+y
+nnoremap <c-s-p> "+gP
+vnoremap <c-s-p> "+gP
 
 " Plugin Config
 let g:ctrlp_working_path_mode = 'ra'
 
-"let g:tagbar_autofocus=1
-let g:tagbar_width=30
-
 let g:NERDTreeWinSize=30
+
+let g:Tlist_Use_Right_Window = 1
+
