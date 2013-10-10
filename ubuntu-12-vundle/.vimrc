@@ -122,10 +122,10 @@ nnoremap <c-s-k> <c-w>j
 
 nnoremap <c-w>e <ESC>:NERDTreeToggle<CR>:TlistToggle<CR>
 
-nnoremap <c-y> "+y
-vnoremap <c-y> "+y
-nnoremap <c-p> "+gP
-vnoremap <c-p> "+gP
+nnoremap <c-s-y> "+y
+vnoremap <c-s-y> "+y
+nnoremap <c-s-p> "+gP
+vnoremap <c-s-p> "+gP
 
 " Plugin Config
 let g:ctrlp_working_path_mode = 'ra'
