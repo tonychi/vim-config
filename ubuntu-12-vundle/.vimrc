@@ -134,15 +134,10 @@ nnoremap <c-w>s :source ~/.vimrc<CR>
 nnoremap <c-w>n :NERDTreeToggle<CR>:TlistToggle<CR>
 nnoremap <c-w>u :GundoToggle<CR>
 
-nnoremap <c-s-l> <c-w>l
-nnoremap <c-s-h> <c-w>h
-nnoremap <c-s-k> <c-w>k
-nnoremap <c-s-j> <c-w>j
-
-nnoremap <c-s-y> "+y
-vnoremap <c-s-y> "+y
-nnoremap <c-s-p> "+gP
-vnoremap <c-s-p> "+gP
+nnoremap <c-s>l <c-w>l
+nnoremap <c-s>h <c-w>h
+nnoremap <c-s>k <c-w>k
+nnoremap <c-s>j <c-w>j
 
 " Plugin Config
 let g:ctrlp_working_path_mode = 'ra'
